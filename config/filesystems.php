@@ -55,8 +55,8 @@ return [
         'products' => [
             'driver' => 'local',
 //            'root' => '/home1/bolichet/public_html/images/guides/', //production
-            'root' => base_path('images/products'),
-            'url' => env('APP_URL') . 'public/images/products',
+            'root' => public_path('assets/images/products'),
+            'url' => env('APP_URL') . 'public/assets/images/products',
             'visibility' => 'public',
         ],
 
