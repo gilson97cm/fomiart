@@ -37,7 +37,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => public_path(), //storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
@@ -55,7 +55,7 @@ return [
         'products' => [
             'driver' => 'local',
 //            'root' => '/home1/bolichet/public_html/images/guides/', //production
-            'root' => storage_path('public/images/products'),
+            'root' => public_path('images/products'),
             'url' => env('APP_URL') . 'public/images/products',
             'visibility' => 'public',
         ],
