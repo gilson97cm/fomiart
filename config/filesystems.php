@@ -63,7 +63,7 @@ return [
         'services' => [
             'driver' => 'local',
 //            'root' => '/home1/bolichet/public_html/images/guides/', //production
-            'root' => 'https://fomiart-production.up.railway.app/public/images/services',// public_path('images/services'),
+            'root' => public_path('images/services'),
             'url' => env('APP_URL') . 'public/images/services',
             'visibility' => 'public',
         ],
