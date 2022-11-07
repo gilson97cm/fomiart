@@ -74,7 +74,7 @@ class Banners extends Component
             $this->validate(['urlImage' => 'image'], ['urlImage.image' => 'La portada debe ser de formato: .jpg,.jpeg ó .png']);
             //save image
             $name = "file-" . time() . '.' . $this->urlImage->getClientOriginalExtension();
-            $path = 'images/banners/'  . $this->urlImage->storeAs('/', $name, 'banners');
+            $path = 'images/banners/'  . $this->urlImage->storePubliclyAs('/', $name, 'banners');
         } else {
             $path = $banner->urlImage;
         }
