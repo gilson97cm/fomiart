@@ -58,7 +58,7 @@ class Products extends Component
 
     public function store()
     {
-        dd("pp :: ".public_path()."\n"."sp :: ".storage_path());
+        // dd("pp :: ".public_path()."\n"."sp :: ".storage_path());
         $this->validate([
             'categoryId' => 'required',
             'name' => 'required|unique:products,name',

@@ -68,6 +68,7 @@
                             @foreach ($dataProduct as $data)
                                 <tr>
                                     <td>
+                                        <p>{{ asset($data->urlImage) }}</p>
                                         <img src="{{ asset($data->urlImage) }}" alt="product image"
                                             class=" align-top m-r-15" style="width:70px; height: 50px">
                                     </td>
