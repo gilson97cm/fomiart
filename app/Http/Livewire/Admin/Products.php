@@ -58,6 +58,8 @@ class Products extends Component
 
     public function store()
     {
+        dd(public_path());
+        dd(storage_path());
         $this->validate([
             'categoryId' => 'required',
             'name' => 'required|unique:products,name',
