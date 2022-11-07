@@ -41,7 +41,7 @@ return [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/guides/', //production
             'root' => public_path('images/products'),
-            'url' => env('APP_URL') . 'public/images/products',
+            'url' => 'images/products', //env('APP_URL') . 'public/images/products',
             'visibility' => 'public',
         ],
 
