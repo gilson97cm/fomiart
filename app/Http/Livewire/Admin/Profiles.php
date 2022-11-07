@@ -32,6 +32,9 @@ class Profiles extends Component
     public $user, $user_id, $name, $lastname, $phone, $email, $urlImage, $password = '', $password_confirmation = '';
 
     public $position = 2, $profile_pos = 1;
+
+    public  $PATH_ROOT = 'storage/images/users/';
+
     public function render()
     {
         $this->user = Auth::user();
@@ -45,7 +48,7 @@ class Profiles extends Component
             $this->validate(['urlImage' => 'image'], ['urlImage.image' => 'La portada debe ser de formato: .jpg,.jpeg ó .png']);
             //save image
             $name = "file-" . time() . '.' . $this->urlImage->getClientOriginalExtension();
-            $path = 'images/users/' . $this->urlImage->storeAs('/', $name, 'users');
+            $path = $this->PATH_ROOT . $this->urlImage->storeAs('/', $name, 'users');
         } else {
             $path = $user->urlImage;
         }
@@ -56,7 +59,6 @@ class Profiles extends Component
         $user->update($data);
 
         $this->alert('success', 'Foto actualizada con exito.');
-
     }
 
     public function removePhoto($id)
@@ -78,7 +80,6 @@ class Profiles extends Component
         $this->lastname = $this->user->lastname;
         $this->email = $this->user->email;
         $this->phone = $this->user->phone;
-
     }
 
     public function updateProfile()
@@ -124,7 +125,6 @@ class Profiles extends Component
 
         $this->alert('success', 'Usuario actualizado con exito.');
         $this->resetInputPassword();
-
     }
 
     public function setPosition($position)
@@ -132,7 +132,8 @@ class Profiles extends Component
         $this->position = $position;
     }
 
-    public function resetInputPassword(){
+    public function resetInputPassword()
+    {
         $this->password = '';
         $this->password_confirmation = '';
     }

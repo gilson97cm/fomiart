@@ -30,22 +30,25 @@ class Banners extends Component
 
     public $bannerId, $urlImage, $status = 1;
 
+    public  $PATH_ROOT = 'storage/images/banners/';
+
     public function render()
     {
         $data_banner = Banner::paginate($this->perPage);
         return view('livewire.admin.banners', compact('data_banner'));
     }
 
-    public function store(){
+    public function store()
+    {
         $this->validate([
             'urlImage' => 'image|required'
-        ],[
+        ], [
             'urlImage.required' => 'Suba una imagen.',
             'urlImage.image' => 'La portada debe ser de formato: .jpg,.jpeg ó .png'
         ]);
         //save image
         $name = "file-" . time() . '.' . $this->urlImage->getClientOriginalExtension();
-        $path = 'storage/images/banners/' . $this->urlImage->storeAs('/', $name, ['disk' => 'banners']);
+        $path = $this->PATH_ROOT . $this->urlImage->storeAs('/', $name, ['disk' => 'banners']);
 
         $data = [
             'urlImage' => $path,
@@ -53,11 +56,12 @@ class Banners extends Component
         ];
 
         $banner = Banner::create($data);
-        $this->alert('success','Banner registrado con exito');
+        $this->alert('success', 'Banner registrado con exito');
         $this->resetInputFields();
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $this->action = 'UPDATE';
         $this->temporaryUrl = false;
 
@@ -67,14 +71,15 @@ class Banners extends Component
         $this->status = $banner->status;
     }
 
-    public function update(){
+    public function update()
+    {
         $banner = Banner::find($this->bannerId);
 
         if ($this->urlImage != $banner->urlImage) {
             $this->validate(['urlImage' => 'image'], ['urlImage.image' => 'La portada debe ser de formato: .jpg,.jpeg ó .png']);
             //save image
             $name = "file-" . time() . '.' . $this->urlImage->getClientOriginalExtension();
-            $path = 'storage/images/banners/'  . $this->urlImage->storeAs('/', $name, 'banners');
+            $path = $this->PATH_ROOT   . $this->urlImage->storeAs('/', $name, 'banners');
         } else {
             $path = $banner->urlImage;
         }
@@ -97,7 +102,7 @@ class Banners extends Component
     public function delete($id)
     {
         $this->bannerId = $id;
-        $this->confirm('¿Seguro que desea eliminar el '.$this->section.'?', [
+        $this->confirm('¿Seguro que desea eliminar el ' . $this->section . '?', [
             'toast' => false,
             'position' => 'center',
             'confirmButtonText' => 'Sí, Eliminar',
@@ -111,7 +116,7 @@ class Banners extends Component
     public function confirmed()
     {
         $banner = Banner::find($this->bannerId);
-        if($banner->urlImage != 'images/placeholder.jpg'){
+        if ($banner->urlImage != 'images/placeholder.jpg') {
             Storage::delete($banner->urlImage);
         }
         $banner->delete();
@@ -124,7 +129,8 @@ class Banners extends Component
         $this->alert('info', 'No se eliminó.');
     }
 
-    public function resetInputFields(){
+    public function resetInputFields()
+    {
         $this->action = 'STORE';
         $this->temporaryUrl = true;
         $this->urlImage = '';

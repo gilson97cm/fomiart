@@ -12,8 +12,10 @@ class Information extends Component
     use LivewireAlert;
     use WithFileUploads;
     public $information;
-    public $email, $phone, $cellphone, $address, $fb,$wtp, $ig, $tw, $urlLogo;
+    public $email, $phone, $cellphone, $address, $fb, $wtp, $ig, $tw, $urlLogo;
     public $temporaryUrl = false;
+
+    public  $PATH_ROOT = 'storage/images/pages/';
 
     public function mount()
     {
@@ -27,12 +29,13 @@ class Information extends Component
     }
 
 
-    public function update(){
+    public function update()
+    {
         $path = 'images/placeholder.jpg';
 
         if ($this->urlLogo != 'images/placeholder.jpg' && $this->temporaryUrl) {
             $name = "file-" . time() . '.' . $this->urlLogo->getClientOriginalExtension();
-            $path = 'images/pages/' . $this->urlLogo->storeAs('/', $name, 'pages');
+            $path =  $this->PATH_ROOT . $this->urlLogo->storeAs('/', $name, 'pages');
         }
         $data = [
             'email' => $this->email,
@@ -48,10 +51,11 @@ class Information extends Component
 
         $this->information->update($data);
 
-        $this->alert('success','Información General actualizada con exito.');
+        $this->alert('success', 'Información General actualizada con exito.');
     }
 
-    public function defaultData(){
+    public function defaultData()
+    {
         $this->email = $this->information->email;
         $this->phone = $this->information->phone;
         $this->cellphone = $this->information->cellphone;

@@ -29,6 +29,8 @@ class Services extends Component
     protected $listeners = ['confirmed', 'cancelled'];
     protected $section = 'Servicio';
 
+    public  $PATH_ROOT = 'storage/images/services/';
+
     public function render()
     {
 
@@ -62,7 +64,7 @@ class Services extends Component
             $this->validate(['urlImage' => 'image'], ['urlImage.image' => 'La imagen debe ser de formato: .jpg,.jpeg ó .png']);
             //save image
             $name = "file-" . time() . '.' . $this->urlImage->getClientOriginalExtension();
-            $path = 'images/services/' . $this->urlImage->storeAs('/', $name, 'services');
+            $path = $this->PATH_ROOT .  $this->urlImage->storeAs('/', $name, 'services');
         }
 
         $data = [
@@ -77,7 +79,6 @@ class Services extends Component
         $this->alert('success', 'Servicio registrado con exito');
         $this->resetInputFields();
         $this->emit('store');
-
     }
 
     public function resetInputFields()
@@ -125,7 +126,7 @@ class Services extends Component
             $this->validate(['urlImage' => 'image'], ['urlImage.image' => 'La imagen debe ser de formato: .jpg,.jpeg ó .png']);
             //save image
             $name = "file-" . time() . '.' . $this->urlImage->getClientOriginalExtension();
-            $path = 'images/services/' . $this->urlImage->storeAs('/', $name, 'services');
+            $path = $this->PATH_ROOT .  $this->urlImage->storeAs('/', $name, 'services');
         } else {
             $path = $service->urlImage;
         }
@@ -146,14 +147,13 @@ class Services extends Component
             $this->alert('danger', 'Error al actualizar el registro.');
         }
         $this->emit('store');
-
     }
 
 
     public function delete($id)
     {
         $this->serviceId = $id;
-        $this->confirm('¿Seguro que desea eliminar el '.$this->section.'?', [
+        $this->confirm('¿Seguro que desea eliminar el ' . $this->section . '?', [
             'toast' => false,
             'position' => 'center',
             'confirmButtonText' => 'Sí, Eliminar',

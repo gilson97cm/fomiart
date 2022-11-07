@@ -1,5 +1,8 @@
 <?php
 
+ $PATH_ROOT = 'storage/images';
+ $URL = 'storage';
+
 return [
 
     /*
@@ -40,7 +43,7 @@ return [
         'products' => [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/guides/', //production
-            'root' => public_path('images/products'),
+            'root' => public_path($PATH_ROOT.'/products'),
             'url' => env('APP_URL') . 'public/images/products',
             'visibility' => 'public',
         ],
@@ -48,22 +51,22 @@ return [
         'services' => [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/guides/', //production
-            'root' => public_path('images/services'),
+            'root' => public_path($PATH_ROOT.'/services'),
             'url' => env('APP_URL') . 'public/images/services',
             'visibility' => 'public',
         ],
         'banners' => [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/banners/',
-            'root' => public_path('storage/images/banners'),
-            'url' => env('APP_URL') . 'storage/public/images/banners',
+            'root' => public_path($PATH_ROOT.'/banners'),
+            'url' => env('APP_URL') . 'public/images/banners',
             'visibility' => 'public',
         ],
 
         'pages' => [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/pages/',
-            'root' => public_path('images/pages'),
+            'root' => public_path($PATH_ROOT.'/pages'),
             'url' => env('APP_URL') . 'public/images/pages',
             'visibility' => 'public',
         ],
@@ -71,7 +74,7 @@ return [
         'users' => [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/users/',
-            'root' => public_path('images/users'),
+            'root' => public_path($PATH_ROOT.'/users'),
             'url' => env('APP_URL') . 'public/images/users',
             'visibility' => 'public',
         ],

@@ -15,7 +15,9 @@ class About extends Component
 
     public $pages;
     public $description, $urlImage, $abstract;
-    public function mount(){
+    public  $PATH_ROOT = 'storage/images/pages/';
+    public function mount()
+    {
         $this->pages = Page::find(1);
         $this->description = $this->pages->aboutUs;
         $this->urlImage = $this->pages->urlImage;
@@ -26,12 +28,13 @@ class About extends Component
         return view('livewire.admin.about');
     }
 
-    public function update(){
-//      dd(  $this->description);
+    public function update()
+    {
+        //      dd(  $this->description);
         $path = 'images/placeholder.jpg';
         if ($this->urlImage != 'images/placeholder.jpg' && $this->temporaryUrl) {
             $name = "file-" . time() . '.' . $this->urlImage->getClientOriginalExtension();
-            $path = 'images/pages/' . $this->urlImage->storeAs('/', $name, 'pages');
+            $path = $this->PATH_ROOT . $this->urlImage->storeAs('/', $name, 'pages');
         }
         $data = [
             'aboutUs' => $this->description,
@@ -41,10 +44,11 @@ class About extends Component
 
         $this->pages->update($data);
 
-        $this->alert('success','Página Acerca de Nosotros actualizada con exito.');
+        $this->alert('success', 'Página Acerca de Nosotros actualizada con exito.');
     }
 
-    public function cancel(){
+    public function cancel()
+    {
         $this->description = $this->pages->aboutUs;
         $this->urlImage = $this->pages->urlImage;
         $this->abstract = $this->pages->abstract;

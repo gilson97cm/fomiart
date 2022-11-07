@@ -32,6 +32,8 @@ class Products extends Component
     protected $listeners = ['confirmed', 'cancelled'];
     protected $section = 'Producto';
 
+    public  $PATH_ROOT = 'storage/images/products/';
+
     public function render()
     {
         if ($this->search != '') {
@@ -86,7 +88,7 @@ class Products extends Component
             $this->validate(['urlImage' => 'image'], ['urlImage.image' => 'La imagen debe ser de formato: .jpg,.jpeg ó .png']);
             //save image
             $name = "file-" . time() . '.' . $this->urlImage->getClientOriginalExtension();
-            $path = 'images/products/' . $this->urlImage->storeAs('/', $name, 'products');
+            $path = $this->PATH_ROOT . $this->urlImage->storeAs('/', $name, 'products');
         }
 
         $data = [
@@ -172,7 +174,7 @@ class Products extends Component
             $this->validate(['urlImage' => 'image'], ['urlImage.image' => 'La imagen debe ser de formato: .jpg,.jpeg ó .png']);
             //save image
             $name = "file-" . time() . '.' . $this->urlImage->getClientOriginalExtension();
-            $path = 'images/products/' . $this->urlImage->storeAs('/', $name, 'products');
+            $path = $this->PATH_ROOT . $this->urlImage->storeAs('/', $name, 'products');
         } else {
             $path = $product->urlImage;
         }

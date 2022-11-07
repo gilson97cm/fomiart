@@ -22,11 +22,12 @@ class Gallery extends Component
     protected $listeners = ['confirmed', 'cancelled'];
     protected $section = 'Imagen';
     public $position = 1;
+    public  $PATH_ROOT = 'storage/images/products/';
     public function render()
     {
-        $this->products = Product::orderBy('name','asc')->where('status',1)->get();
+        $this->products = Product::orderBy('name', 'asc')->where('status', 1)->get();
 
-        if($this->product_id != null ){
+        if ($this->product_id != null) {
             $product = Product::find($this->product_id);
             $this->pictures = $product->pictures;
         }
@@ -34,7 +35,8 @@ class Gallery extends Component
         return view('livewire.admin.gallery');
     }
 
-    public function storeProduct(){
+    public function storeProduct()
+    {
         //  dd('hola');
         $product = Product::find($this->product_id);
 
@@ -43,21 +45,21 @@ class Gallery extends Component
             $this->validate(['url_imageProduct' => 'image'], ['url_imageProduct.image' => 'La portada debe ser de formato: .jpg,.jpeg ó .png']);
             //save image
             $name = "file-" . time() . '.' . $this->url_imageProduct->getClientOriginalExtension();
-            $path = 'images/products/' . $this->url_imageProduct->storeAs('/', $name, 'products');
+            $path = $this->PATH_ROOT .  $this->url_imageProduct->storeAs('/', $name, 'products');
         }
         $imageUpload = new Picture([
             'urlImage' => $path
         ]);
         $product->pictures()->save($imageUpload);
 
-        $this->alert('success','Imagen agregada');
+        $this->alert('success', 'Imagen agregada');
     }
 
 
     public function delete($id)
     {
         $this->pictureId = $id;
-        $this->confirm('¿Seguro que desea eliminar la '.$this->section.'?', [
+        $this->confirm('¿Seguro que desea eliminar la ' . $this->section . '?', [
             'toast' => false,
             'position' => 'center',
             'confirmButtonText' => 'Sí, Eliminar',
@@ -82,14 +84,14 @@ class Gallery extends Component
         $this->alert('info', 'No se eliminó.');
     }
 
-    public function resetInputFields(){
+    public function resetInputFields()
+    {
         $this->product_id = null;
         $this->url_imageProduct = null;
-
     }
-    public function setPosition($position){
+    public function setPosition($position)
+    {
         $this->position = $position;
         $this->resetInputFields();
     }
 }
-
