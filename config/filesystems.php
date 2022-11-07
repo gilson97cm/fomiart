@@ -55,8 +55,8 @@ return [
         'banners' => [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/banners/',
-            'root' => public_path('images/banners'),
-            'url' => env('APP_URL') . 'public/images/banners',
+            'root' => public_path('storage/images/banners'),
+            'url' => env('APP_URL') . 'storage/public/images/banners',
             'visibility' => 'public',
         ],
 
