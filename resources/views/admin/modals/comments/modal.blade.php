@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-inline-block align-middle">
-                                <h5 class="text-center m-b-10">{{$comment->commentable->name}}</h5>
+                                <h5 class="text-center m-b-10">{{isset($comment->commentable->name) ? $comment->commentable->name : 'N/A'}}</h5>
                                 <p class="text-center">{{\Carbon\Carbon::parse($comment->created_at)->format('Y, M d H:i')}}</p>
                                 <div class="d-inline-block">
                                  <span class="m-b-0">
