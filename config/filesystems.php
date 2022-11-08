@@ -1,7 +1,7 @@
 <?php
 
  $PATH_ROOT = 'storage/images';
- $URL = 'storage';
+ $PATH_URL = 'public/images';
 
 return [
 
@@ -44,7 +44,7 @@ return [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/guides/', //production
             'root' => public_path($PATH_ROOT.'/products'),
-            'url' => env('APP_URL') . 'public/images/products',
+            'url' => env('APP_URL') . $PATH_URL.'/products',
             'visibility' => 'public',
         ],
 
@@ -52,14 +52,14 @@ return [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/guides/', //production
             'root' => public_path($PATH_ROOT.'/services'),
-            'url' => env('APP_URL') . 'public/images/services',
+            'url' => env('APP_URL') . $PATH_URL.'/services',
             'visibility' => 'public',
         ],
         'banners' => [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/banners/',
             'root' => public_path($PATH_ROOT.'/banners'),
-            'url' => env('APP_URL') . 'public/images/banners',
+            'url' => env('APP_URL') . $PATH_URL.'/banners',
             'visibility' => 'public',
         ],
 
@@ -67,7 +67,7 @@ return [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/pages/',
             'root' => public_path($PATH_ROOT.'/pages'),
-            'url' => env('APP_URL') . 'public/images/pages',
+            'url' => env('APP_URL') . $PATH_URL.'/pages',
             'visibility' => 'public',
         ],
 
@@ -75,7 +75,7 @@ return [
             'driver' => 'local',
             //            'root' => '/home1/bolichet/public_html/images/users/',
             'root' => public_path($PATH_ROOT.'/users'),
-            'url' => env('APP_URL') . 'public/images/users',
+            'url' => env('APP_URL') . $PATH_URL.'/users',
             'visibility' => 'public',
         ],
 
