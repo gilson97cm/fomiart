@@ -88,31 +88,31 @@ class DatabaseSeeder extends Seeder
         //         'status' => 1,
         //     ]);
 
-        //     for ($j = 0; $j < 10; $j++) {
-        //         $name = $faker->firstNameMale;
-        //         $lastname = $faker->lastname;
-        //         $profile = substr($name, 0, 1).substr($lastname, 0, 1);
-        //         $arrayColor = ['#84b6f4','#f9a59a','#fa5f49','#bc98f3','#f47e8e','#ff9c9c','#f45572','#6a9eda','#84b6f4','#c0a0c3'];
-        //         $bgProfile = array_rand($arrayColor, 1);
-        //         $comment = new Comment([
-        //             'name' => $name,
-        //             'lastname' => $lastname,
-        //             'profile' => $profile,
-        //             'bgProfile' => $arrayColor[$bgProfile],
-        //             'email' => 'client@email.com',
-        //             'rating' => rand(0, 5),
-        //             'message' => $shortDescription,
-        //             'status' => 1
-        //         ]);
-        //         $product->comments()->save($comment);
-        //     }
+            // for ($j = 0; $j < 10; $j++) {
+            //     $name = $faker->firstNameMale;
+            //     $lastname = $faker->lastname;
+            //     $profile = substr($name, 0, 1).substr($lastname, 0, 1);
+            //     $arrayColor = ['#84b6f4','#f9a59a','#fa5f49','#bc98f3','#f47e8e','#ff9c9c','#f45572','#6a9eda','#84b6f4','#c0a0c3'];
+            //     $bgProfile = array_rand($arrayColor, 1);
+            //     $comment = new Comment([
+            //         'name' => $name,
+            //         'lastname' => $lastname,
+            //         'profile' => $profile,
+            //         'bgProfile' => $arrayColor[$bgProfile],
+            //         'email' => 'client@email.com',
+            //         'rating' => rand(0, 5),
+            //         'message' => $shortDescription,
+            //         'status' => 1
+            //     ]);
+            //     $product->comments()->save($comment);
+            // }
 
-        //     for ($k = 0; $k < 2; $k++) {
-        //         $imageUpload = new Picture([
-        //             'urlImage' => 'images/placeholder.jpg',
-        //         ]);
-        //         $product->pictures()->save($imageUpload);
-        //     }
+            // for ($k = 0; $k < 2; $k++) {
+            //     $imageUpload = new Picture([
+            //         'urlImage' => 'images/placeholder.jpg',
+            //     ]);
+            //     $product->pictures()->save($imageUpload);
+            // }
         // }
 
 
